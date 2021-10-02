@@ -1,0 +1,53 @@
+
+
+
+1.
+class InheritArrayObject extends ArrayObject {
+
+    public function __set($name, $val) {
+        $this[$name] = $val;
+    }
+
+    public function displayAsTable() {
+        $table =  '<table>';
+        $table .= '<tbody>';    
+        $all_data = (array) $this;
+        foreach ($all_data as $key => $value) {
+            $table .= '<tr>';
+            $table .= '<td>' . $key . '</td>';
+            $table .= '<th>' . $value . '</th>';
+            $table .= '</tr>';
+        }    
+        $table .= '</tbody>';
+        $table .=  '</table>';    
+        return $table;
+    } 
+}
+
+$object = new InheritArrayObject();    
+$object->Name = 'Syed Md. Asif Hossain'; 
+$object->Gender = 'Male'; 
+$object->Profession = 'Software Engineer'; 
+$object->Institute = 'East West University';
+
+
+Explanation: ArrayObject was said to use in the question. Through ArrayObject, we can work with objects as arrays. So i declared a class which
+took all the functionalities from ArrayObject through inheritence. then inside this class i created function where i created the table manually.
+
+
+
+3.
+select u.user_id, 
+u.first_name, 
+u.last_name, 
+tr.test_id, 
+avg(tr.correct), 
+cast(time_taken as date) as date, 
+cast(time_taken as time) as time
+from user u
+left join test_result tr
+on u.user_id=tr.user_id
+group by u.user_id;
+
+Explanation: Here i have used left join as it was said in question paper that all user entries should appear. 
+So i put the user table first, then the test_result at second.
